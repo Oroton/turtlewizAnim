@@ -1,0 +1,46 @@
+var tilesets = {
+	splashScreen: new Tileset('tilesets/splash.png', 768, 640),
+	turtle: new Tileset('tilesets/turtle.png', 56, 64),
+	girlturtle: new Tileset('tilesets/girlturtle.png', 56, 64),
+	dragon: new Tileset('tilesets/dragon.png', 128, 88),
+	hedgehog: new Tileset('tilesets/hedgehog.png', 64, 64),
+	ogre: new Tileset('tilesets/ogre.png', 64, 56),
+	axe: new Tileset('tilesets/axe.png', 64, 64),
+	fireball: new Tileset('tilesets/fireball.png', 40, 40),
+	brownwizard: new Tileset('tilesets/brownwizard.png', 56, 64),
+	heart: new Tileset('tilesets/heart.png', 64, 56), 
+	lavasnail: new Tileset('tilesets/lavasnail.png', 64, 56), 
+	potion: new Tileset('tilesets/potion.png', 56, 64),
+	projectiles: new Tileset('tilesets/projectiles.png', 24, 24),
+	lavasnake: new Tileset('tilesets/lavasnake.png', 96, 96),
+	lavasnakeminion: new Tileset('tilesets/lavasnakeminion.png', 64, 64),
+	keys: new Tileset('tilesets/keys.png', 64, 64),
+	icewand: new Tileset('tilesets/icewand.png', 64, 64),
+	whale: new Tileset('tilesets/whale.png', 128, 120),
+	mapitem: new Tileset('tilesets/mapitem.png', 48, 48),
+	gamemap: new Tileset('tilesets/gamemap.png', 480, 520),
+	turtlehead: new Tileset('tilesets/turtlehead.png', 24, 24),
+	smash: new Tileset('tilesets/smash.png', 96, 56),
+	chicken: new Tileset('tilesets/chicken.png', 56, 40),
+	scorpion: new Tileset('tilesets/scorpion.png', 72, 48),
+	hammer: new Tileset('tilesets/hammer.png', 64, 64),
+	scorpionboss: new Tileset('tilesets/scorpionboss.png', 128, 80),
+	rock: new Tileset('tilesets/rock.png', 64, 56),
+	fireproofturtle: new Tileset('tilesets/fireproofturtle.png', 56, 64),
+	bigfireball: new Tileset('tilesets/bigfireball.png', 64, 56),
+	zombieturtle: new Tileset('tilesets/zombieturtle.png', 64, 64),
+	
+	maptiles: new Tileset('tilesets/maptiles.png', 64, 64, 
+		[
+			'0,0', '1,0', '4,1', '4,0', '0,1', '5,1', '6,0', '2,2', '3,2', '7,2', 
+			'5,3', '4,3', '0,4', '1,4', '0,5', '1,5', '2,5', '3,5', '5,4', '6,3', 
+			'3,7', '4,7', '5,5', '6,5', '7,5', '5,6', '7,6', '5,7', '6,7', '7,7', 
+			'4,6', '3,6', '2,7', '0,6', '0,7', '1,7', '2,8', '3,8', '4,8', '2,9', 
+			'3,9', '4,9', '5,9', '6,9', '7,9', '2,10', '3,10', '4,10', '5,10', '6,10',
+			'7,10', '0,10', '1,10', '0,11', '1,11', '2,11', '3,11', '4,11', '5,11'
+		]
+	),
+	
+	tileselector: new Tileset('tilesets/tileselector.png', 64, 64),
+	mapselector: new Tileset('tilesets/mapselector.png', 96, 80)
+}

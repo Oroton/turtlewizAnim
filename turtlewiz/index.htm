@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>Turtle Wizard</title>
+	<style>
+		body {margin: 0; background: #000; text-align: center}
+	</style>
+</head>
+<body>
+	<canvas height="640" width="768" id="canvas"></canvas>
+	<script src="index_data/maps.js"></script>
+	<script src="index_data/engine.js"></script>
+	<script src="index_data/spritefunction.js"></script>
+	<script src="index_data/mapfunction.js"></script>
+	<script src="index_data/game.js"></script>
+	<script src="index_data/tilesets.js"></script>
+	<script src="index_data/spritedefinitions.js"></script>
+	<script src="index_data/sprites.js"></script>
+	<script src="index_data/maplayout.js"></script>
+	
+	<script>
+		if (game.debugMode.on) {
+			game.debugMode.turnOn();
+		}
+		
+		function update(mod) {
+			eng.fps.update();
+			if (game.message == '' && !game.splashScreen) { //all game code inside here
+				eng.updateSprites(sprites, mod);
+				if (typeof game.currentMap.runFunction != 'undefined') {
+					game.currentMap.runFunction(mod);
+				}
+				if (eng.keysDown[90]) {
+					eng.useItem();
+				}
+				if (eng.keysDown[88]) {
+					eng.scrollItem();
+					delete eng.keysDown[88];
+				}
+			} else if (game.splashScreen) {
+				if (eng.keysDown[32]) {
+					game.splashScreen = false;
+					delete eng.keysDown[32];
+				}
+			} else if (eng.keysDown[32]) {
+				game.message = '';
+				delete eng.keysDown[32];
+			}
+		}
+		
+		function render() {
+			requestAnimationFrame(render);
+			if (eng.loadedImages == eng.imageCount) {
+				eng.clearCanvas();
+				game.currentMap.draw();
+				eng.drawSprites(sprites);
+				eng.drawItem();
+				if (game.drawHealthBar) {
+					eng.drawHealthBar(game.healthBarSprite);
+				}
+				if (sprites.player.hasHeart) {
+					eng.drawHeart();
+				}
+				if (game.message != '') {
+					eng.drawMessage(game.message);
+				}
+				if (game.displayMap) {
+					eng.drawMap();
+				}
+				eng.fps.draw();
+				if (game.splashScreen) {
+					ctx.drawImage(tilesets.splashScreen.image, 0, 0);
+				}
+			}
+		}
+		
+		function tick() {
+			update((Date.now() - lastTick) / 1000);
+			lastTick = Date.now();
+		}
+		
+		var lastTick = Date.now();
+		setInterval(tick, 16.67); //60fps
+		render();
+		
+		//init
+		window.addEventListener('keydown', function(e) {
+			if (eng.inArray(e.keyCode, [32, 37, 38, 39, 40])) {
+				e.preventDefault();
+			}
+			eng.keysDown[e.keyCode] = true;
+		});
+		window.addEventListener('keyup', function(e) {
+			delete eng.keysDown[e.keyCode];
+		});
+
+		
+		eng.updateMap();
+		
+	</script>
+
+</body></html>
